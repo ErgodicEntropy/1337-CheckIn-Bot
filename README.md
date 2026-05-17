@@ -1,2 +1,269 @@
 # 1337-CheckIn-Bot
 If everyone has a gun, the gun loses its comparative advantage: mutually-assured destruction pushes equal and contending powers towards homeostasis.
+
+
+
+# How to Use
+
+## 1. Clone or Download the Project
+
+Clone the repository using Git:
+
+```bash
+git clone <repository_url>
+cd <project_folder>
+```
+
+Or download the ZIP file manually and extract it.
+
+---
+
+## 2. Install Python Requirements
+
+Make sure you have Python installed on your machine.
+
+- Recommended Python version: **Python 3.10+**
+- Verify installation:
+
+```bash
+python --version
+```
+
+Install all required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+If you are using multiple Python versions, you may need:
+
+```bash
+pip3 install -r requirements.txt
+```
+
+### Optional: Create a Virtual Environment
+
+Using a virtual environment is recommended to avoid dependency conflicts.
+
+#### Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+#### Linux / macOS
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+Then install requirements again inside the environment:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 3. Configure Your Credentials
+
+Open the main script or configuration file and insert your account credentials.
+
+Example:
+
+```python
+EMAIL = "your_email@example.com"
+PASSWORD = "your_password"
+```
+
+Replace the placeholders with your actual credentials.
+
+> Keep your credentials private and never share them publicly or upload them to GitHub.
+
+---
+
+## 4. Configure Discord Webhook (Optional)
+
+Discord webhooks allow the application to send notifications directly to a Discord channel.
+
+### Step-by-Step Discord Webhook Setup
+
+#### Create a Discord Server (Skip if You Already Have One)
+
+- Open Discord
+- Click the **"+"** button on the left sidebar
+- Select:
+  - **Create My Own**
+  - Choose:
+    - For me and my friends
+    - Or for a community
+- Enter a server name
+- Click **Create**
+
+---
+
+#### Create or Select a Channel
+
+- Inside your server:
+  - Click the **"+"** next to **Text Channels**
+  - Create a new channel
+  - Example:
+    - `notifications`
+    - `logs`
+    - `alerts`
+
+Or use an existing channel.
+
+---
+
+#### Enable Webhooks
+
+- Hover over the target channel
+- Click the **gear icon** (Edit Channel)
+- In the left sidebar:
+  - Select **Integrations**
+- Click:
+  - **Webhooks**
+- Press:
+  - **New Webhook**
+
+---
+
+#### Configure the Webhook
+
+You can customize:
+
+- Webhook name
+  - Example:
+    - `Ticket Monitor`
+    - `Bot Alerts`
+- Webhook avatar (optional)
+
+Make sure the webhook is assigned to the correct channel.
+
+---
+
+#### Copy the Webhook URL
+
+- Click:
+  - **Copy Webhook URL**
+
+It should look similar to:
+
+```text
+https://discord.com/api/webhooks/1234567890/abcdefghijklmnopqrstuvwxyz
+```
+
+---
+
+#### Insert the Webhook URL Into the Project
+
+Paste the URL into the appropriate variable in the script or configuration file.
+
+Example:
+
+```python
+WEBHOOK_URL = "https://discord.com/api/webhooks/your_webhook_here"
+```
+
+If you do not want Discord notifications, you can leave this field empty.
+
+---
+
+## 5. Run the Project
+
+Start the application using:
+
+```bash
+python main.py
+```
+
+Or depending on the filename:
+
+```bash
+python app.py
+```
+
+---
+
+# Common Issues
+
+## `ModuleNotFoundError`
+
+Install missing dependencies again:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Python Not Found
+
+Ensure Python is installed and added to PATH.
+
+Test with:
+
+```bash
+python --version
+```
+
+---
+
+## Discord Webhook Not Sending Messages
+
+Check that:
+
+- The webhook URL is correct
+- The webhook was not deleted
+- The channel permissions allow webhooks
+- Internet connection is active
+
+---
+
+## Invalid Login or Authentication Errors
+
+Verify that:
+
+- Email and password are correct
+- The account is accessible normally through the website
+- Any required verification steps are completed
+
+---
+
+# Security Recommendations
+
+- Never hardcode sensitive credentials in public repositories
+- Use environment variables when possible
+- Do not share your Discord webhook publicly
+  - Anyone with the webhook URL can send messages to your channel
+
+Example using environment variables:
+
+```python
+import os
+
+EMAIL = os.getenv("EMAIL")
+PASSWORD = os.getenv("PASSWORD")
+WEBHOOK_URL = os.getenv("WEBHOOK_URL")
+```
+
+Example `.env` file:
+
+```env
+EMAIL=your_email@example.com
+PASSWORD=your_password
+WEBHOOK_URL=https://discord.com/api/webhooks/...
+```
+
+---
+
+# Notes
+
+- Ensure your internet connection is stable while running the application
+- Some features may require updated browser drivers or dependencies
+- Running inside a virtual environment is strongly recommended for stability
+
+
